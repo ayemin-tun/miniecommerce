@@ -18,17 +18,28 @@
                 <p>{{ $product->size }} cm</p>
                 <h3 class="text-danger">Price -{{ $product->price - ($product->discount / 100) * $product->price }}</h3>
                 <p><span class="text-decoration-line-through">{{ $product->price }}</span>{{ $product->discount }} %</p>
-                Enter Quantity
+
                 <form action="{{ url('/product/addcart') }}" method="post">
                     @csrf
-                    <input type="number" name="qty" id="" min="1" max="{{ $product->qty }}"
-                        value="1" class="form-control">
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    @if (Auth::check() && Auth::user()->role == 'user')
-                        <input type="submit" class="btn btn-primary mt-2" value="Add To Cart">
-                    @elseif(Auth::check() && Auth::user()->role == 'superadmin')
+                    @if ($product->qty == 0)
+                        <span class="btn btn-danger btn-sm">Out of stock</span>
                     @else
-                        <a href="{{ url('/login') }}" class="btn btn-primary mt-2">Login Frist</a>
+                        Choose Quantity
+                        <input type="number" name="qty" id="" min="1" max="{{ $product->qty }}"
+                            value="1" class="form-control">
+                    @endif
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    @if (Auth::check())
+                        @if (Auth::user()->role == 'user')
+                            @if ($product->qty > 0)
+                                <input type="submit" class="btn btn-primary mt-2" value="Add To Cart">
+                            @endif
+                        @else
+                            <span class="text-danger fs-6">{{ Auth::user()->role }} can not perform checkout</span>
+                            <a href="{{ url('/new') }}" class="btn btn-primary mt-2">Go to Admin panel</a>
+                        @endif
+                    @else
+                        <a href="{{ url('/login') }}" class="btn btn-primary mt-2">Login First</a>
                     @endif
                 </form>
             </div>

@@ -7,7 +7,7 @@
             </div>
         @endif
         <div class="text-center">
-            <h2>CONTACT US</h2>
+            <h2>@lang('contact.contact_us')</h2>
             <p>Welcom To Our Website</p>
         </div>
 
@@ -16,7 +16,7 @@
                 <div class="cart text-center shadow p-3 m-2">
                     <h3><i class="fa fa-phone" aria-hidden="true"></i></h3>
                     <div class="card-body">
-                        <h3>Call Us</h3>
+                        <h4>@lang('contact.call_us')</h4>
                         <p>09-12345678,09-123567892</p>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="cart text-center shadow p-3 m-2">
                     <h3><i class="fa-solid fa-location-dot" aria-hidden="true"></i></h3>
                     <div class="card-body">
-                        <h3>Office Location</h3>
+                        <h4>@lang('contact.address')</h4>
                         <p>Yangon, North Dagon, No 89</p>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <div class="cart text-center shadow p-3 m-2">
                     <h3><i class="fa fa-envelope" aria-hidden="true"></i></h3>
                     <div class="card-body">
-                        <h3>Mail Us</h3>
+                        <h4>@lang('contact.mail_us')</h4>
                         <p>amtonlineshop@gmail.com</p>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="cart text-center shadow p-3 m-2">
                     <h3><i class="fa-solid fa-clock" aria-hidden="true"></i></h3>
                     <div class="card-body">
-                        <h3>Office Time</h3>
+                        <h3>@lang('contact.office_time')</h3>
                         <p>9:00 am ~ 5:00 pm</p>
                     </div>
                 </div>

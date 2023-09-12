@@ -36,7 +36,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-dark">{{ $product->product_name }}</h5>
                             <h6 class="text-dark">{{ $product->price }}-MMK</h6>
-                            <a href="{{ url('detail/' . $product->id) }}" class="btn btn-primary">View Details</a>
+                            <a href="{{ url('detail/' . $product->id) }}" class="btn btn-primary">@lang('nav.view_detail')</a>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-dark">{{ $product->product_name }}</h5>
                             <h6 class="text-dark">{{ $product->price }}-MMK</h6>
-                            <a href="{{ url('detail/' . $product->id) }}" class="btn btn-primary">View Details</a>
+                            <a href="{{ url('detail/' . $product->id) }}" class="btn btn-primary">@lang('nav.view_detail')</a>
                         </div>
                     </div>
 
