@@ -3,7 +3,9 @@
     <section class="container">
         @if (Session()->has('cartinfo'))
             <div class="alert alert-success w-100 mt-3">
-                {{ session()->get('cartinfo') }} and <a href="{{ url('cart') }}">Go To Cart</a>
+                {{ session()->get('cartinfo') }} and <a href="{{ url('cart') }}">
+                    @lang('detail.go_to_cart')
+                </a>
             </div>
         @endif
         <div class="row mt-5">
@@ -16,15 +18,16 @@
 
                 <h5>{{ $product->product_name }}</h5>
                 <p>{{ $product->size }} cm</p>
-                <h3 class="text-danger">Price -{{ $product->price - ($product->discount / 100) * $product->price }}</h3>
+                <h3 class="text-danger">@lang('detail.price')
+                    -{{ $product->price - ($product->discount / 100) * $product->price }}</h3>
                 <p><span class="text-decoration-line-through">{{ $product->price }}</span>{{ $product->discount }} %</p>
 
                 <form action="{{ url('/product/addcart') }}" method="post">
                     @csrf
                     @if ($product->qty == 0)
-                        <span class="btn btn-danger btn-sm">Out of stock</span>
+                        <span class="btn btn-danger btn-sm">@lang('detail.out_of_stock')</span>
                     @else
-                        Choose Quantity
+                        @lang('detail.choose_qty')
                         <input type="number" name="qty" id="" min="1" max="{{ $product->qty }}"
                             value="1" class="form-control">
                     @endif
@@ -32,7 +35,7 @@
                     @if (Auth::check())
                         @if (Auth::user()->role == 'user')
                             @if ($product->qty > 0)
-                                <input type="submit" class="btn btn-primary mt-2" value="Add To Cart">
+                                <input type="submit" class="btn btn-primary mt-2" value="@lang('detail.add_to_cart')">
                             @endif
                         @else
                             <span class="text-danger fs-6">{{ Auth::user()->role }} can not perform checkout</span>
@@ -45,16 +48,16 @@
             </div>
 
             <div class="col-md-4 p-5">
-                <p>Delievery</p>
+                <p>@lang('detail.deli')</p>
                 <p><i class="fa-solid fa-location-dot"></i></i> Yangon.Bahan Township</p>
-                <p><i class="fa-solid fa-car"></i></i> Home Delievery</p>
-                <p>2~5 Days</p>
-                <i class="fa-solid fa-money-check"></i> Cash on Delivery Available
+                <p><i class="fa-solid fa-car"></i></i> @lang('detail.home_deli')</p>
+                <p>2~5 @lang('detail.days')</p>
+                <i class="fa-solid fa-money-check"></i> @lang('detail.cod_ava')
             </div>
         </div>
 
         <div class="row mt-3">
-            <h3 class="">Top Sell</h3>
+            <h3 class="">@lang('detail.top_sell')</h3>
             @foreach ($products as $p)
                 <div class="col-md-3 mt-3">
                     <a href="{{ url('/detail/' . $p->id) }}" class="text-dark">

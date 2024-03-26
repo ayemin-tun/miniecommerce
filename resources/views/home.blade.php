@@ -43,8 +43,8 @@
                 </div>
             @endforeach
         </div>
-
-        <div class="row mt-3">
+        <hr>
+        <div class="row mt-5">
             <h3 class="text-center ">New Brand</h3>
             @foreach ($products->reverse() as $product)
                 <div class="col-md-3 mt-3">
